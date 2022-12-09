@@ -1,0 +1,8 @@
+{% assign currencySize = 4 %}
+{% assign currencyCodes = "HKD GEL WST VUV TOP " | rstrip | split: ' ' %}
+{% assign currencySymbols = "$ RF RF RF RF " | rstrip | split: ' ' %}
+{% assign defaultCurrencyCode = "HKD" %}
+{% assign defaultCurrencySymbol = "$" %}
+
+    {% render 'scm-currency-switcher-08' ,currencySize : currencySize, currencyCodes : currencyCodes ,currencySymbols :currencySymbols,defaultCurrencyCode: defaultCurrencyCode,defaultCurrencySymbol:defaultCurrencySymbol %}
+    

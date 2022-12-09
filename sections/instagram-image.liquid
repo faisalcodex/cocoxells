@@ -1,0 +1,89 @@
+<style>
+  #instagram-image{
+    text-align:center;
+    margin-top: 171px;
+    margin-bottom: 139px;
+  }
+  #instagram-image img{
+    height:674px;
+    width:484px;
+    object-fit: cover;
+  }
+  #instagram-image h2{
+            margin-bottom: 98px;
+        font-size: 40px;
+  }
+  #grid-instagram-image {
+    zoom: 110%;
+  }
+</style>
+
+
+
+<div id="instagram-image">
+  <div class="page-full no-padd">
+  <div class="grid">
+           <div class="grid__item medium-up--one-whole">
+<h2>{{ section.settings.main_heading }}</h2>
+           </div>
+    </div>
+    <div id="grid-instagram-image" class="grid">
+      <div class="controals">
+        <div class="grid__item medium-up--one-third">
+         <img src="{{section.settings.image_one |img_url:''}}">
+        </div>
+       <div class="grid__item medium-up--one-third">
+        <img src="{{section.settings.image_two |img_url:''}}">
+        </div>
+       <div class="grid__item medium-up--one-third">
+          <img src="{{section.settings.image_three |img_url:''}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "instagram-image",
+    "settings": [
+{
+  "type": "text",
+  "id": "main_heading",
+  "label": "Heading"
+},
+      {
+"type":"image_picker",
+"id":"image_one",
+"label":"Select Image for slide"
+},
+
+       {
+"type":"image_picker",
+"id":"image_two",
+"label":"Select Image for slide"
+},
+
+       {
+"type":"image_picker",
+"id":"image_three",
+"label":"Select Image for slide"
+}
+      
+    ],
+     "presets":[
+{
+"category":"instagram-image",
+"name":"instagram-image"
+
+}
+]
+  }
+{% endschema %}
+

@@ -1,0 +1,135 @@
+<style>
+  #two-image{
+    text-align:center;
+  }
+  #two-image img{
+   /* width:100%;*/
+  }
+   #two-image{
+    font-size: 16px;
+    margin-left: 16px;
+   }
+  .specific{
+    margin-top:121px;
+  }
+  .specific img{
+     width:301px ;
+  }
+  .hard-code{
+      text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 36px;
+    margin-left: 246px;
+    margin-right: 246px;
+    margin-top: 44px;
+  }
+
+  #two-image p{
+      margin-top: 44px;
+  }
+
+  #heroImageAbout{
+    content: url("{{ section.settings.image_two | img_url:'' }}");
+  }
+  @media (max-width: 768px) {
+      .hard-code {
+    text-align: center;
+    font-size: 16px !important;
+    font-weight: 400;
+    line-height: 30px !important;
+    margin-left: 28px !important;
+    margin-right: 28px !important;
+    margin-top: 28px !important;
+  }
+     .specific img{
+     width:200px !important;
+  }
+.specific {
+    margin-top: 46px !important;
+}
+    #shopify-section-template--16886790684986__411554b7-9515-4ed6-9b71-d3074fcb8157 {
+    margin-top: 58px !important;
+}
+    #two-image p {
+    margin-top: 28.28px !important;
+}
+    #shopify-section-template--16886790684986__411554b7-9515-4ed6-9b71-d3074fcb8157 p {
+    font-size: 16px !important;
+    line-height: 30px !important;
+}
+    #heroImageContainer{
+      padding: 0 0px;
+    }
+    #heroImageAbout{
+      content: url("{{ 'about-mobile-hero_new.png' | asset_url }}");
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+</style>
+
+
+
+
+<div id="two-image">
+  <div class="grid">
+    <div id="heroImageContainer" class="page-full">
+      <img id="heroImageAbout" class="full-img">
+      <div class="specific">
+        <img src="{{section.settings.image_three |img_url:''}}">
+      </div>
+      <h2>{{ section.settings.main_heading }}</h2>   
+    </div>
+</div>
+</div>
+ <div class="hard-code">
+     <p>{{ section.settings.main_prah }}</p>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "two-image",
+    "settings": [
+       {
+"type":"image_picker",
+"id":"image_two",
+"label":"Select Image"
+},
+        {
+"type":"image_picker",
+"id":"image_three",
+"label":"Select Image"
+},
+      {
+  "type": "text",
+  "id": "main_heading",
+  "label": "Heading"
+},
+      {
+  "type": "textarea",
+  "id": "main_prah",
+  "label": "Heading"
+}
+    ],
+     "presets":[
+{
+"category":"two-image",
+"name":"two-image"
+
+}
+]
+  }
+{% endschema %}
+

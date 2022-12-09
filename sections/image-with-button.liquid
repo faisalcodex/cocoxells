@@ -1,0 +1,121 @@
+<style>
+  #image-with-button{
+    text-align: center;
+  }
+  #image-with-button .btn-primary{
+  background:#EBC4BF;
+    color: #150886;
+  }
+  #image-with-button img{
+      width: 100%;
+  }
+  #image-with-button .btn-primary{
+	width: 239px;
+    height: 62px;
+    font-size: 25px;
+    font-weight: 300;
+}
+  #image-with-button .btn-primary{
+      margin-top: 76px;
+  }
+  .heroImage{
+    content: url("{{ section.settings.image_two | img_url:'' }}");
+  }
+  .btn-container{
+    display: flex;
+    justify-content: center;
+  }
+  .btn-shop-now{
+    width: 239px;
+    height: 62px;
+    background: #EBC4BF;
+    border-radius: 31px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 20px;
+  }
+  @media (max-width: 768px) {  
+    #image-with-button .btn-primary{
+      margin-top: 21px !important;
+    }
+    #meta_product .btn-primary{
+      margin-top:13px !important; 
+    }
+    .btn-shop-now{
+      width: 140px;
+      height: 39px;
+      margin-top: 21px;
+      font-size: 16px;
+    }
+    #meta_product{
+      padding: 0 !important;
+      margin-top: 29px !important;
+    }
+    [data-type_product_capitalize=true] .grid-product__title{
+      font-size:16px !important;
+    }
+    .grid-product__price {
+      margin-top: 6px !important;
+    }
+    .appear-delay{
+      margin-bottom: 24px !important;
+    }
+    [data-button_style=square] .btn:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style=square] .rte .btn:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style=square] .shopify-payment-button .shopify-payment-button__button--unbranded:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style=square] .spr-container .spr-button:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style=square] .spr-container .spr-summary-actions a:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style^=round] .btn:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style^=round] .rte .btn:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style^=round] .shopify-payment-button .shopify-payment-button__button--unbranded:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style^=round] .spr-container .spr-button:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static), [data-button_style^=round] .spr-container .spr-summary-actions a:not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):not(.btn--body):not(.btn--static){
+      margin-top: 32px !important;
+    }
+    .heroImage{
+      content: url("{{ 'hero_mobile_homepage_new.png' | asset_url }}");
+      height: 90vh;
+      object-fit: cover;
+    }
+  }
+</style>
+
+<div id="image-with-button">
+  <div class="grid">
+     <img class="heroImage">
+      {% if section.settings.bilal_btn_txt != blank %}
+      <div class="btn-container">
+      <a href="{{ section.settings.bilal_btn_link }}" class="btn-shop-now"> {{ section.settings.bilal_btn_txt }}</a>
+        </div>
+      {%endif%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "image-with-button",
+    "settings": [
+        {
+"type":"image_picker",
+"id":"image_two",
+"label":"Select Image for slide"
+},
+      {
+  "type": "text",
+  "id": "bilal_btn_txt",
+  "label": "Heading"
+},
+       {
+  "type": "url",
+  "id": "bilal_btn_link",
+  "label": "Heading"
+}
+    ],
+    "presets":[
+{
+"category":"image-with-button",
+"name":"image-with-button"
+
+}
+]
+  }
+{% endschema %}
+

@@ -1,0 +1,63 @@
+<style>
+  .ekla{
+    display:none;
+  }
+    .pass-area{
+    position:relative;
+  }
+  #togglePassword{
+    position:absolute;
+    top:13px;
+    right:10px;
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<div id="registeration-page" class="page-width page-width--tiny page-content">
+  <header class="section-header">
+    <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+  </header>
+
+  <div class="form-vertical">
+    {%- form 'create_customer' -%}
+
+      {{ form.errors | default_errors }}
+
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input type="text" name="customer[first_name]" id="FirstName" class="input-full"{% if form.first_name %} value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+   
+      <label class="ekla" for="lastName">{{ 'customer.register.first_name' | t }}</label><label>Last Name</label>
+      <input type="text" name="customer[first_name]" id="FirstName" class="input-full"{% if form.first_name %} value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+
+    <label for="Email">{{ 'customer.register.email' | t }}</label>
+      <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}"{% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+
+      <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
+    <div class="pass-area">
+      <input type="password" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}">
+      <i class="far fa-eye fa-lg" id="togglePassword" style="color:#2D2D2D"></i>
+</div>
+      <p>
+        <label for="register-submit" class="hidden-label">{{ 'customer.register.submit' | t }}</label>
+        <input type="submit" id="register-submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
+      </p>
+<p class="bhss"><a href="https://coccoxells.myshopify.com/">Return to Store</a></p>
+      
+<p style="color:black">Already have an account? <a href="https://coccoxells.myshopify.com/account/login?return_url=%2Faccount/" style="text-decoration:underline">Login here.</a></p>
+    {%- endform -%}
+  </div>
+</div>
+{% section 'instagram-image' %}
+
+   <script>
+const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#CreatePassword');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+</script>

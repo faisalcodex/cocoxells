@@ -1,0 +1,76 @@
+<div class="site-nav">
+  <div class="site-nav__icons">
+    {% comment %}
+     <a id="show_mobo" href="{{ routes.search_url }}" class="site-nav__link site-nav__link--icon js-search-header">
+                        
+<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.6129 15.9686C19.0653 13.9288 19.7159 11.3999 19.4343 8.88767C19.1528 6.37546 17.96 4.06529 16.0945 2.41933C14.2291 0.773367 11.8285 -0.0869923 9.37314 0.0103769C6.91777 0.107746 4.58866 1.15566 2.85178 2.94448C1.11491 4.73329 0.0983577 7.13108 0.00550496 9.65813C-0.0873478 12.1852 0.750346 14.6551 2.35099 16.5738C3.95164 18.4925 6.1972 19.7185 8.63841 20.0064C11.0796 20.2944 13.5365 19.623 15.5174 18.1268H15.5159C15.5609 18.1885 15.6089 18.2472 15.6629 18.3043L21.4379 24.2478C21.7191 24.5374 22.1007 24.7002 22.4986 24.7004C22.8965 24.7005 23.2782 24.538 23.5596 24.2485C23.8411 23.9591 23.9993 23.5664 23.9994 23.1569C23.9996 22.7474 23.8416 22.3546 23.5604 22.0649L17.7854 16.1215C17.7318 16.0656 17.6741 16.014 17.6129 15.9671V15.9686ZM17.9999 10.0344C17.9999 11.1495 17.7865 12.2535 17.3719 13.2837C16.9573 14.3138 16.3496 15.2498 15.5835 16.0382C14.8174 16.8267 13.908 17.4521 12.907 17.8788C11.9061 18.3055 10.8333 18.5251 9.74988 18.5251C8.66648 18.5251 7.59368 18.3055 6.59274 17.8788C5.59181 17.4521 4.68233 16.8267 3.91625 16.0382C3.15017 15.2498 2.54248 14.3138 2.12788 13.2837C1.71327 12.2535 1.49988 11.1495 1.49988 10.0344C1.49988 7.78259 2.36908 5.62297 3.91625 4.03067C5.46343 2.43837 7.56185 1.54382 9.74988 1.54382C11.9379 1.54382 14.0363 2.43837 15.5835 4.03067C17.1307 5.62297 17.9999 7.78259 17.9999 10.0344Z" fill="black"/>
+</svg>
+
+                        <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
+                      </a>
+                      {% endcomment %}
+    {%- if shop.customer_accounts_enabled -%}
+      <p id="show_desko"  class="site-nav__link site-nav__link--icon" href="{{ routes.account_url }}" style="text-transform:capitalize;">
+
+ 
+            {% if customer %}                          
+<a href="/account/" style="color:#000">My Account</a>                 	
+                            
+        {% else %}
+      
+        <a href="/account/" style="color:#000">Sign In</a> / <a href="/account/register" style="color:#000">Register</a>
+      {% endif %}
+        <span class="icon__fallback-text">
+          {%- if customer -%}
+            {{ 'layout.customer.account' | t }}
+          {%- else -%}
+            {{ 'layout.customer.log_in' | t }}
+          {%- endif -%}
+        </span>
+      </p>
+    {%- endif -%}
+<selector-root data-id=LT845417>
+            </selector-root>
+
+    {%- if settings.search_enable -%}
+      <a href="{{ routes.search_url }}" class="site-nav__link site-nav__link--icon js-search-header{% if section.settings.main_menu_alignment == 'center' or section.settings.main_menu_alignment == 'center-split' %} medium-up--hide{% endif %} small--hide">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"/></svg>
+        <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
+      </a>
+    {%- endif -%}
+
+    {%- if section.settings.main_menu_alignment == 'left' or section.settings.main_menu_alignment == 'left-center' or section.settings.main_menu_alignment == 'left-drawer' -%}
+      <button
+        type="button"
+        class="site-nav__link site-nav__link--icon js-drawer-open-nav{% if section.settings.main_menu_alignment == 'left' or section.settings.main_menu_alignment == 'left-center' %} medium-up--hide{% endif %}"
+        aria-controls="NavDrawer">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-hamburger" viewBox="0 0 64 64"><path d="M7 15h51M7 32h43M7 49h51"/></svg>
+        <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
+      </button>
+    {%- endif -%}
+
+    {% capture the_snippet_fave_icon_menu %}{% render 'ssw-widget-faveicon-menu' with product.id %}{% endcapture %}
+    {% unless the_snippet_fave_icon_menu contains 'Liquid error' %}
+    {{ the_snippet_fave_icon_menu }}
+    {% endunless %}    
+   
+    <a id="show_mobo" href="{{ routes.cart_url }}" class="site-nav__link site-nav__link--icon js-drawer-open-cart" aria-controls="CartDrawer" data-icon="{{ settings.cart_icon }}">
+      <span class="cart-link">
+        {%- if settings.cart_icon == 'cart' -%}
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-cart" viewBox="0 0 64 64"><path fill="none" d="M14 17.44h46.79l-7.94 25.61H20.96l-9.65-35.1H3"/><circle cx="27" cy="53" r="2"/><circle cx="47" cy="53" r="2"/></svg>
+        {%- elsif settings.cart_icon == 'bag-minimal' -%}
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag-minimal" viewBox="0 0 64 64"><path stroke="null" id="svg_4" fill-opacity="null" stroke-opacity="null" fill="null" d="M11.375 17.863h41.25v36.75h-41.25z"/><path stroke="null" id="svg_2" d="M22.25 18c0-7.105 4.35-9 9.75-9s9.75 1.895 9.75 9"/></svg>
+        {%- else -%}
+         <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.61252 8.84C2.65915 8.33881 2.92295 7.87115 3.35138 7.53017C3.77981 7.18918 4.34143 6.9999 4.92439 7H18.9046C19.4876 6.9999 20.0492 7.18918 20.4776 7.53017C20.9061 7.87115 21.1699 8.33881 21.2165 8.84L22.1475 18.84C22.1731 19.1152 22.1324 19.392 22.0279 19.6529C21.9234 19.9139 21.7574 20.1533 21.5403 20.3563C21.3233 20.5592 21.0599 20.7211 20.7667 20.8319C20.4735 20.9427 20.1569 20.9999 19.8368 21H3.99222C3.67213 20.9999 3.35553 20.9427 3.06234 20.8319C2.76916 20.7211 2.50575 20.5592 2.28869 20.3563C2.07163 20.1533 1.90562 19.9139 1.80112 19.6529C1.69663 19.392 1.6559 19.1152 1.6815 18.84L2.61252 8.84V8.84Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.5522 10V5C16.5522 3.93913 16.0636 2.92172 15.1938 2.17157C14.3241 1.42143 13.1445 1 11.9145 1C10.6845 1 9.50493 1.42143 8.6352 2.17157C7.76546 2.92172 7.27686 3.93913 7.27686 5V10" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        {%- endif -%}
+        <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+        <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}"></span>
+      </span>
+    </a>
+           
+  </div>
+</div>

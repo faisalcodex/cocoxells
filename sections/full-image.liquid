@@ -1,0 +1,97 @@
+<style>
+  #full-image{
+    text-align:center;
+  }
+  #full-image img{
+    width:100%;
+  }
+   #full-image{
+    font-size: 16px;
+    margin-left: 16px;
+   }
+  #full-image h2{
+      font-size: 50px;
+    line-height: 70px;
+    margin: 0;
+    margin-bottom: 33px;
+  }
+  .cocoHeroImage{
+    content: url("{{ section.settings.image_two | img_url:'' }}");
+  }
+  #full-image p{
+      font-size: 25px;
+    line-height: 40px;
+  }
+  @media(max-width:768px){
+    #full-image h2{
+      font-size: 25px;
+  }
+    #full-image p{
+      font-size: 16px;
+      line-height: 30px;
+    padding: 0px 28px;
+  }
+  #shopify-section-template--16886790521146__50c45da3-5591-473f-a5c2-b5e732909968 {
+    margin-top: 26px;
+  }
+  .cocoHeroImage{
+    content: url("{{ 'cocogirls-hero-mobile 1.png' | asset_url }}");
+    height: 90vh;
+    object-fit: cover;
+  }
+  }
+</style>
+
+
+
+
+<div id="full-image">
+  <div class="grid">
+        <img class="cocoHeroImage">
+ <h2>{{ section.settings.main_heading }}</h2>
+     <p>{{ section.settings.main_prah }}</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "full-image",
+    "settings": [
+       {
+"type":"image_picker",
+"id":"image_two",
+"label":"Select Image"
+},
+      {
+  "type": "text",
+  "id": "main_heading",
+  "label": "Heading"
+},
+      {
+  "type": "textarea",
+  "id": "main_prah",
+  "label": "Heading"
+}
+    ],
+     "presets":[
+{
+"category":"full-image",
+"name":"full-image"
+
+}
+]
+  }
+{% endschema %}
+

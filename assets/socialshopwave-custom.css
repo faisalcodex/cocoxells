@@ -1,0 +1,18 @@
+:root {
+  --gw_reward_tab_color: #0B7A75 !important;
+  --gw_reward_text_color: #fff !important;
+
+}
+
+.ssw-reward-box-quest-wrapper, div#ssw-fave-side-bar, .ssw-modal-content, .ssw-reward-box-wrapper, .ssw-reward-box-side.ssw-reward-box-side-not-guest, .ssw-reward-box-bottom, ul.ssw-dropdown-menu {
+  background-color: #363636 !important;
+}
+
+a.ssw-link-fave-menu.ssw-link-fave-menu-hide-count > i.ssw-icon-heart-o, a.ssw-link-fave-menu.ssw-link-fave-menu-hide-count > i.ssw-icon-heart {
+  font-size: 21px;
+}
+
+.site-nav__icons {
+  display: flex;
+  align-items: center;
+}

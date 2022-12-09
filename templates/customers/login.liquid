@@ -1,0 +1,129 @@
+<style>
+  .pass-area{
+    position:relative;
+  }
+  #togglePassword{
+    position:absolute;
+    top:13px;
+    right:10px;
+  }
+  #RecoverPasswordForm {
+    margin-top: 75px;
+  }
+  #RecoverPasswordForm .recover_pw_subtitle{
+    text-align: left;
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<div class="page-width page-width--tiny page-content">
+ 
+
+  <div class="note note--success hide" id="ResetSuccess">
+    {{ 'customer.recover_password.success' | t }}
+  </div>
+
+  <div id="CustomerLoginForm" class="form-vertical">
+     <header class="section-header">
+    <h1 class="section-header__title">{{ 'customer.login.title' | t }}</h1>
+  </header>
+    {%- form 'customer_login' -%}
+
+      {{ form.errors | default_errors }}
+
+      <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+      <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" autofocus>
+
+      {%- if form.password_needed -%}
+        <div class="grid">
+          <div class="grid__item one-half">
+            <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+          </div>
+          <div class="grid__item one-half text-right">
+           
+          </div>
+        </div>
+    <div class="pass-area">
+        <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}">
+   <i class="far fa-eye" id="togglePassword" style="color:#2D2D2D"></i>
+    </div>
+      {%- endif -%}
+
+      <p>
+        <button type="submit" class="btn btn--full">
+          {{ 'customer.login.sign_in' | t }}
+        </button>
+      </p>
+       <small class="label-info">
+              <a href="#recover" id="RecoverPassword">
+                {{ 'customer.login.forgot_password' | t }}
+              </a>
+            </small>
+    
+      <p><span class="dont-use">Don’t have an account?</span> {{ 'layout.customer.create_account' | t | customer_register_link }}</p>
+ 
+    {%- endform -%}
+  </div>
+
+  <div id="RecoverPasswordForm" class="hide">
+    <div class="form-vertical">
+      <h2 style="color:#2D2D2D;margin-bottom:20px">Forgot Password</h2>
+      <p class="recover_pw_subtitle" style="color:#2D2D2D;">Cocogirl, we’ll send you an email to reset password.</p>
+
+      {%- form 'recover_customer_password' -%}
+
+        {{ form.errors | default_errors }}
+
+        {%- if form.posted_successfully? -%}
+          <span class="hide reset-password-success"></span>
+        {%- endif -%}
+
+        <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
+        <input type="email" value="" name="email" id="RecoverEmail" class="input-full" autocorrect="off" autocapitalize="off">
+
+        <p>
+          <button type="submit" class="btn btn--full">
+          {{ 'customer.login.sign_in' | t }}
+        </button>
+      
+        </p>
+<!--         <small class="label-info">
+              <a href="#recover" id="RecoverPassword">
+                {{ 'customer.login.forgot_password' | t }}
+              </a>
+            </small> -->
+      <p class="bhss"><a href="https://coccoxells.myshopify.com/">Return to Store</a></p>
+      <p><span class="dont-use">Don’t have an account?</span> {{ 'layout.customer.create_account' | t | customer_register_link }}</p>
+      {%- endform -%}
+   
+    </div>
+
+  </div>
+
+  {%- if shop.checkout.guest_login -%}
+   
+    <hr class="hr--clear">
+
+    <h1>{{ 'customer.login.guest_title' | t }}</h1>
+   
+    <hr class="hr--small">
+
+    {%- form 'guest_login' -%}
+      <button type="submit" class="btn">
+        {{ 'customer.login.guest_continue' | t }}
+      </button>
+    {%- endform -%}
+  {%- endif -%}
+</div>
+    {% section 'instagram-image' %}
+    <script>
+const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#CustomerPassword');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+</script>
